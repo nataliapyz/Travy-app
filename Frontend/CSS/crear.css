@@ -1,0 +1,301 @@
+/* Layout de base para esta pantalla*/
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+body {
+    background-color: #f7faff;
+    font-family: 'Segoe UI', sans-serif;
+}
+main {
+    flex: 1;
+    padding-top: 80px;
+}
+
+/* ====EDITAR AÑO Y CIUDAD/
+/* Efecto “foco” al pasar el ratón */
+.editable-titulo:hover,
+.editable-fecha:hover {
+    text-shadow: 0 0 6px rgba(120, 120, 120, 0.5);
+}
+.input-titulos {
+    width: 180px;
+    max-width: 100%;
+    padding: 8px 14px;
+    margin: 12px auto;
+    font-size: 20px;
+    text-align: center;
+    background-color: rgba(64, 137, 247, 0.1);
+    border: none;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    color: #2c3e50;
+    outline: none;
+    transition: all 0.3s ease;
+    display: block;
+}
+.input-titulos:focus,
+.input-titulos:not(:placeholder-shown) {
+    width: 300px;
+    background-color: #f2f6f8
+}
+.editable-titulo {
+    font-size: 40px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin-bottom: 12px;
+    color: #2f2f2f;
+    letter-spacing: 1px;
+}
+.editable-fecha {
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    color: #2f2f2f;
+    margin-top: 0;
+}
+/*=== ICONOS*/
+/*icono de cambiar de todas las tarjetas*/
+.icono-editar {
+    z-index: 3;
+}
+/*botones de eliminar de papeleras */
+.btn-eliminar img {
+    transition: opacity 0.2s ease;
+}
+.btn-eliminar img:hover {
+    opacity: 0.7;
+}
+
+
+/*===LA PARTE DEL CONTENIDO DE LAS TARJETAS===*/
+.tarjeta {
+    background-color: #eeeeee;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.05);
+    min-height: 200px;
+}
+.tarjeta strong {
+    font-size: 1.5rem;
+}
+.tarjeta-expandible {
+    max-height: 150px;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    position: relative;
+    cursor: pointer;
+}
+.tarjeta-expandible.expandida {
+    max-height: 600px;
+}
+.vista-previa {
+    margin-top: 10px;
+    font-style: italic;
+    color: #555;
+}
+.contenido-diario {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+.tarjeta-expandible.expandida .contenido-diario {
+    opacity: 1;
+    pointer-events: auto;
+    margin-top: 10px;
+}
+.cabecera-tarjeta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.icono-editar {
+    float: right;
+    cursor: pointer;
+    width: 20px;
+    opacity: 0.7;
+}
+.icono-editar:hover {
+    opacity: 1;
+}
+/* === Tarjeta que contiene la parte visual y el fondo dinámico con flechas === */
+.tarjeta-visual {
+    position: relative;
+    height: 200px;
+    border-radius: 20px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.05);
+}
+#tarjeta-visual-fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    z-index: 0;
+}
+/* Flechitas sobre el fondo de "visual" */
+#prevFoto, #nextFoto {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+}
+#prevFoto { left: 10px; }
+#nextFoto { right: 10px; }
+/* === Fondo del visor que amplía las fotos === */
+.visor-fotos {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+
+/* === CONTENEDOR DE LA IMAGEN === */
+.visor-contenido {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.visor-contenido img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+}
+
+/*BOTÓN DE CERRAR */
+.btn-cerrar {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    background: white;
+    border: none;
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+}
+
+/* CONTENEDOR DE  FLECHAS */
+.visor-controles {
+    margin-top: 12px;
+    display: flex;
+    gap: 12px;
+}
+/*   BOTONES DE FLECHAS  */
+.visor-controles button {
+    background: white;
+    border: none;
+    font-size: 16px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 99999 !important;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s ease;
+}
+.visor-controles button:hover {
+    background-color: #efefef;
+}
+/* Botón de eliminar elemento*/
+#eliminarFotoVisor {
+    border: none;
+    color: black;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 6px 12px;
+    transition: background-color 0.2s ease;
+    border-radius: 6px;
+}
+#eliminarFotoVisor:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+/*== Tarjeta de la parte del MAPA== */
+.tarjeta-mapa {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.05);
+}
+
+
+footer {
+    background-color: #cccccc;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.categoria-selector {
+    position: absolute;
+    top: 190px;
+    right: 80px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.icono-categoria {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+.icono-categoria:hover {
+    opacity: 1;
+}
+
+#categoriaSelect {
+    margin-top: 6px;
+    padding: 6px 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    color: #2f2f2f;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+
+.d-none {
+    display: none;
+}

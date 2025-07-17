@@ -1,0 +1,72 @@
+body {
+    background-color: #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+/*  Modificaciones al contenedor principal, enlaces, img etc*/
+.login-container {
+    background: white;
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 800px;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.login-image {
+    flex: 1;
+    background: url('/Frontend/login.jpg') no-repeat center center/cover;
+    border-radius: 10px;
+}
+.custom-margin {
+    margin-bottom: 1rem;
+}
+.login-form {
+    flex: 1;
+    padding: 40px;
+}
+
+
+.login-form h2 {
+    margin-bottom: 20px;
+    font-family: 'Monserrat', sans-serif;
+    font-weight: bold;
+}
+.form-label {
+    font-weight: bold;
+}
+.form-control {
+    background-color: #f7f7f7;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+}
+.form-control:focus {
+    background-color: #f7f7f7;
+    box-shadow: none;
+}
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+
+a:hover {
+    text-decoration: underline;
+}
+.btn-login {
+    margin-top: 10px;
+    text-align: center;
+    width: 60%;
+    border-radius: 20px;
+}
+
+
+
+.form-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+

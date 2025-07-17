@@ -1,0 +1,311 @@
+     * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+
+     /*----ZONA DE "SIN VIAJES"*/
+    /* Contenedor principal para centrar el contenido */
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .title {
+        margin-top: -120px;
+        margin-bottom: 150px;
+        font-weight: bold;
+    }
+    .empty-state {
+        background: #eeeeee;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        height: 250px;
+        text-align: center;
+    }
+    /* Adaptamos el botón que tenemos en el login pero para este caso */
+    .btn-login {
+        text-align: center;
+        width: 60%;
+        border-radius: 20px;
+        padding: 10px;
+        background-color: #2970db;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+    .btn-login:hover {
+        background-color: #1e58a6;
+    }
+    /*-----------------AQUI ACABA SIN VIAJES*/
+
+
+
+    /*---AHORA CON VIAJES*/
+    /* Contenedor de las tarjetas */
+     body {
+         font-family: Arial, sans-serif;
+         text-align: center;
+         background-color: #f5f5f5;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: flex-start;
+         padding-top: 200px;
+     }
+
+     #viajesContainer {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 20px;
+         justify-content: center;
+         align-items: flex-start;
+         max-width: 100%;
+         padding: 20px;
+     }
+    /*Estilos de las tarjetas que se van creando según los viajes que tengamos */
+     .card {
+        width: 200px;
+        height: 200px;
+         margin: 10px;
+        border-radius: 25px;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 28px;
+         text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+        color: white;
+        text-align: center;
+        position: relative;
+        cursor: pointer;
+    }
+    .card input {
+        display: none;
+    }
+    .card .overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        border-radius: 25px;
+    }
+     .card-text {
+         height: 100%;
+         justify-content: center;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         line-height: 1.2;
+         gap: 4px;
+         text-align: center;
+     }
+     .titulo-viaje {
+         font-size: 30px;
+     }
+     .fecha-viaje {
+         font-size: 28px;
+     }
+
+
+     /* Esta es la animación de cuando pasas por encima de las tarjetas*/
+     .card {
+         transition: transform 0.3s ease, box-shadow 0.3s ease;
+     }
+     .card:hover {
+         transform: scale(1.03);
+         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+         z-index: 2;
+     }
+     /*icono del + en la ultima tarjeta*/
+    .mas-icon {
+            width: 25px;
+            height: 25px;
+            margin-top: 2px;
+        }
+    /*Transparencia negra de la tarjeta "Planifica tu viaje"*/
+     .planifica-card .overlay {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgba(0, 0, 0, 0.7);
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         text-align: center;
+         border-radius: 25px;
+     }
+    /* icono de cambiar y menu desplegable cuando clicamos en  el*/
+     .edit-icon {
+         position: absolute;
+         top: -8px;
+         right: -8px;
+         width: 20px;
+         height: 20px;
+         opacity: 0;
+         transition: opacity 0.3s ease;
+         cursor: pointer;
+         z-index: 3;
+     }
+     .opciones-menu {
+         position: absolute;
+         top: 35px;
+         right: 10px;
+         background: white;
+         border: 1px solid #ccc;
+         border-radius: 10px;
+         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+         z-index: 5;
+         display: flex;
+         flex-direction: column;
+     }
+     .opciones-menu .opcion {
+         padding: 8px 12px;
+         border: none;
+         background: none;
+         cursor: pointer;
+         text-align: left;
+         font-size: 14px;
+     }
+     .opciones-menu .opcion:hover {
+         background-color: #f0f0f0;
+         border-radius: 10px;
+     }
+     /* Solo aparece al pasar el ratón por la tarjeta */
+     .card:hover .edit-icon {
+         opacity: 1;
+     }
+     .planifica-card .overlay p,
+     .planifica-card .overlay img {
+         transform: translateY(20px);
+     }
+
+
+     /* Toda la zona del desplegable de FILTRADO y ORDENACIÓN*/
+     .titulo-mis-viajes-container {
+         display: flex;
+         justify-content: center;
+         position: relative;
+     }
+     .title {
+         position: relative;
+         display: inline-block;
+         margin-top: -120px;
+         margin-bottom: 150px;
+         font-weight: bold;
+         font-size: 2.5rem;
+     }
+     .icono-filtrar {
+         position: absolute;
+         top: 20%;
+         left: 100%;
+         transform: translate(20px, -50%);
+         width: 18px;
+         height: 18px;
+         cursor: pointer;
+     }
+     /*Menú principal: FILTRAR + ORDENAR */
+     .menu-flotante {
+         background-color: white;
+         border: 1px solid #ccc;
+         padding: 10px 0;
+         border-radius: 10px;
+         box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+         position: absolute;
+         top: 20px;
+         left: 250px;
+         z-index: 15;
+         display: flex;
+         flex-direction: column;
+         min-width: 200px;
+     }
+     .menu-flotante button {
+         padding: 10px 15px;
+         background: none;
+         border: none;
+         text-align: left;
+         font-size: 14px;
+         cursor: pointer;
+         transition: background-color 0.2s ease;
+     }
+     .menu-flotante button:hover {
+         background-color: #f0f0f0;
+         border-radius: 0;
+     }
+     /* Submenú de las categorias */
+     .filtro-categorias {
+         background-color: white;
+         border: 1px solid #ccc;
+         padding: 10px 15px;
+         border-radius: 10px;
+         box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+         position: absolute;
+         margin-left: 10px;
+         z-index: 10;
+         display: flex;
+         flex-direction: column;
+         gap: 8px;
+         min-width: 220px;
+         max-width: 280px;
+         text-align: left;
+         font-size: 14px;
+         white-space: normal;
+         word-wrap: break-word;
+     }
+     .filtro-categorias label,
+     #menuOrdenar label {
+         display: flex;
+         align-items: center;
+         gap: 8px;
+         font-weight: normal;
+     }
+
+     .filtro-categorias input[type="checkbox"],
+     #menuOrdenar input[type="radio"] {
+         margin-right: 6px;
+     }
+     /* Submenú para ordenar */
+     #menuOrdenar {
+         background-color: white;
+         border: 1px solid #ccc;
+         padding: 10px 15px;
+         border-radius: 10px;
+         box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+         position: absolute;
+         margin-left: 10px;
+         z-index: 20;
+         min-width: 230px;
+         max-width: 280px;
+         text-align: left;
+         font-size: 14px;
+         white-space: normal;
+         word-wrap: break-word;
+     }
+     .filtro-categorias input[type="checkbox"],
+     #menuOrdenar input[type="radio"] {
+         margin-right: 6px;
+     }
+     .filtro-categorias,
+     #menuOrdenar {
+         top: 10px;
+         left: 240px;
+         z-index: 20;
+     }
+
